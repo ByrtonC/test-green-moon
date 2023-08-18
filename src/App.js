@@ -1,5 +1,8 @@
 import { BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
+// store
+import { Provider } from 'react-redux';
+import store from './store';
 // routes
 import Router from './routes';
 // theme
@@ -13,13 +16,15 @@ import ScrollToTop from './components/scroll-to-top';
 export default function App() {
   return (
     <HelmetProvider>
-      <BrowserRouter>
-        <ThemeProvider>
-          <ScrollToTop />
-          <StyledChart />
-          <Router />
-        </ThemeProvider>
-      </BrowserRouter>
+      <Provider store={store}>
+        <BrowserRouter>
+          <ThemeProvider>
+            <ScrollToTop />
+            <StyledChart />
+            <Router />
+          </ThemeProvider>
+        </BrowserRouter>
+      </Provider>
     </HelmetProvider>
   );
 }
